@@ -5,11 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/mystyle.css">
+    <link rel="stylesheet" href="mystyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
     <style>
+
+      html,body {
+        margin: 0;
+        height: 100%;
+      }
       /* Remove the navbar's default margin-bottom and rounded borders */
       .navbar {
         margin-bottom: 0;
@@ -33,13 +38,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Comparably</a>
+        <a class="navbar-brand" href="index.html">Comparably</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
-          <!-- <li><a href="#">About</a></li>
-          <li><a href="#">Gallery</a></li>
+          <li><a href="compare.html">Compare</a></li>
+          <!-- <li><a href="#">Gallery</a></li>
           <li><a href="#">Contact</a></li> -->
         </ul>
         <!-- <ul class="nav navbar-nav navbar-right">
@@ -54,130 +59,208 @@
 
       <form class="form-inline">
         <div class=".col-lg-12">
-          <h2>Search for Jobs</h2>
+          <h2>Search for Jobs (Based on the following parameters)</h2>
           <div>
-            <input type="search" class="form-control" id="search-bar" ng-model="search_bar" placeholder="Enter Company">
-            <button type="submit" class="btn btn-primary" ng-click="search()">Search</button>
+            <!-- <input type="search" class="form-control" id="search-bar" ng-model="search_bar" placeholder="Enter Company"> -->
           </div>
-          <small class="form-text text-muted">Enter the company name you want to search for... eg Microsoft</small>
+          <!-- <small class="form-text text-muted">Enter the company name you want to search for... eg Microsoft</small> -->
         </div>
       </form>
-      <br> <br>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2">
-            <div class="card">
-              <div class="card-body">
-                <input type="checkbox" ng-model="checked1">
-                <h5 class="card-title">Perks and Benefits</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider1" ng-disabled="!checked1">
-                <p>Value: {{slider1}}</p>
-                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      <br>
+
+      <div class="row">
+          <div class="col-xs-6">
+                <div class="row">
+                    <div class="col-xs-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <input type="checkbox" ng-model="checked1">
+                          <h5 class="card-title">Compensations</h5>
+                          <p class="card-text"></p>
+                          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <input type="checkbox" ng-model="checked2">
+                          <h5 class="card-title">Perks And Benefits</h5>
+                          <p class="card-text"></p>
+                          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <input type="checkbox" ng-model="checked3">
+                          <h5 class="card-title">Retention</h5>
+                          <p class="card-text"></p>
+                          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <input type="checkbox" ng-model="checked4">
+                          <h5 class="card-title">Professional Development</h5>
+                          <p class="card-text"></p>
+                          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                      </div>
+                    </div>
               </div>
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <div class="card">
-              <div class="card-body">
-                <input type="checkbox" ng-model="checked2">
-                <h5 class="card-title">Job Security</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider2" ng-disabled="!checked2">
-                <p>Value: {{slider2}}</p>
-                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <div class="card">
-              <div class="card-body">
-                <input type="checkbox" ng-model="checked3">
-                <h5 class="card-title">Growth</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider3" ng-disabled="!checked3">
-                <p>Value: {{slider3}}</p>
-                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <div class="card">
-              <div class="card-body">
-                <input type="checkbox" ng-model="checked4">
-                <h5 class="card-title">Employee satisfaction</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider4" ng-disabled="!checked4">
-                <p>Value: {{slider4}}</p>
-                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <div class="card">
-              <div class="card-body">
-                <input type="checkbox" ng-model="checked5">
-                <h5 class="card-title">Work Environment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider5" ng-disabled="!checked5">
-                <p>Value: {{slider5}}</p>
-                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <div class="card">
-              <div class="card-body">
-                <input type="checkbox" ng-model="checked6">
-                <h5 class="card-title">Cultue and Work life Balance</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider6" ng-disabled="!checked6">
-                <p>Value: {{slider6}}</p>
-                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+
+        <div class="col-xs-6">
+                <div class="row">
+                    <div class="col-xs-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <input type="checkbox" ng-model="checked5">
+                          <h5 class="card-title">Work Environment</h5>
+                          <p class="card-text"></p>
+                          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <input type="checkbox" ng-model="checked6">
+                          <h5 class="card-title">Leadership</h5>
+                          <p class="card-text"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <input type="checkbox" ng-model="checked7">
+                          <h5 class="card-title">Work Culture</h5>
+                          <p class="card-text"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <input type="checkbox" ng-model="checked8">
+                          <h5 class="card-title">Happiness</h5>
+                          <p class="card-text"></p>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+        </div>
+    </div>
+
+    <div class="row">
+          <div class="col-xs-6">
+                <div class="row">
+                    <div class="col-xs-3">
+                      <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider1" ng-disabled="!checked1">
+                      <p>{{slider1}}</p>
+                    </div>
+                    <div class="col-xs-3">
+                      <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider2" ng-disabled="!checked2">
+                      <p>{{slider2}}</p>
+                    </div>
+                    <div class="col-xs-3">
+                      <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider3" ng-disabled="!checked3">
+                      <p>{{slider3}}</p>
+                    </div>
+                    <div class="col-xs-3">
+                      <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider4" ng-disabled="!checked4">
+                      <p>{{slider4}}</p>
+                    </div>
+              </div>
+        </div>
+        <div class="col-xs-6">
+                <div class="row">
+                    <div class="col-xs-3">
+                      <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider5" ng-disabled="!checked5">
+                      <p>{{slider5}}</p>
+                    </div>
+                    <div class="col-xs-3">
+                      <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider6" ng-disabled="!checked6">
+                      <p>{{slider6}}</p>
+                    </div>
+                    <div class="col-xs-3">
+                      <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider7" ng-disabled="!checked7">
+                      <p>{{slider7}}</p>
+                    </div>
+                    <div class="col-xs-3">
+                      <input type="range" min="0" max="10" value="5" class="slider" ng-model="slider8" ng-disabled="!checked8">
+                      <p>{{slider8}}</p>
+                    </div>
+              </div>
+        </div>
+    </div>
+
+      <select ng-model="selectedItemvalue">
+          <option value="">Domain</option>
+          <option ng-repeat="sel in selectables" value="{{sel.value}}">{{sel.label}}</option>
+      </select>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      <button type="submit" class="btn btn-primary" ng-click="search()">Search</button>
 
     </div>
   </div>
 
-  <div id="progress_bar" ng-show="MainTable_Progress_Bar" class="progress">
+  <!-- <div id="progress_bar" ng-show="MainTable_Progress_Bar" class="progress">
       <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:60%">
       </div>
+  </div> -->
+
+  <div ng-show="extraDiv" class="container-fluid">
+    <br><br><br><br><br><br><br><br><br>
   </div>
 
   <div ng-show="ResultsTable" class="container-fluid">
-    <h3>Search Results</h3><br>
+    <h3 style="text-align: center;">Search Results</h3><br>
     <!-- <div class="row">
       <div class="col-sm-12">
         <p>Some text..</p>
         <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
       </div>
   </div><br> -->
-  <div ng-repeat="res in resultsArray" class="row">
-    <div class="col-sm-6">
+  <div ng-repeat="(key,value) in resultsArray" class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8">
+      <div class="panel-group">
+        <div class="panel panel-primary">
+          <div class="panel-heading">{{$index + 1}}. {{key}}</div>
+          <div class="panel-body">
+            <ul>
+                <li ng-repeat="(key,value) in value">
+                    {{key}} : {{value}}
+                </li>
+            </ul>
+            <!-- <a href="" class="btn btn-primary pull-right">Link</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+    </div>
+
+    <!-- <div class="col-sm-6">
       <div class="panel-group">
         <div class="panel panel-primary">
           <div class="panel-heading">{{$index + 1}}. {{res.name}}</div>
-          <div class="panel-body">{{res.desc}}
-            <a href="#" class="btn btn-primary">Apply</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="panel-group">
-        <div class="panel panel-primary">
-          <div class="panel-heading">{{$index + 2}}. {{res.name}}</div>
           <div class="panel-body">
             {{res.desc}}
-            <a href="#" class="btn btn-primary">Apply</a>
+            <a href="#" class="btn btn-primary pull-right">Apply</a>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <br>
@@ -209,6 +292,6 @@
   <footer class="container-fluid text-center">
     <p>All rights Reserved. Copyright @ Trojans LA Tech Fair Hackathon Team</p>
   </footer>
-  <script src="../static/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
