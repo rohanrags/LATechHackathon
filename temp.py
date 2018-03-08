@@ -2,22 +2,29 @@ from flask import Flask,request,render_template, jsonify
 import json
 import Predict
 import numpy as np
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/search": {"origins": "*"}, r"/evaluate": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
-
-@app.route('/search',methods=['POST'])
-def bacon():
+@app.route('/search',methods=['POST','GET', 'OPTIONS'])
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+def search():
     print(request.is_json)
-    content = request.get_json()
+    if request.method == 'POST' or request.method == "GET":
+        content = request.get_json()
     #print(content)
     result = Predict.getResults(content)
     #print(result)
-    return json.dumps(result)
+    res = json.dumps(result)
+    return res
 
-@app.route('/evaluate',methods=['POST','GET'])
+@app.route('/evaluate',methods=['POST','GET','OPTIONS'])
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+@cross_origin(supports_credentials=True)
 def test():
-    if request.method == 'POST' or request.method == "GET":
+    if request.method == 'POST' or request.method == "GET" or request.method == "OPTIONS":
         data = request.get_json()
     vector = []
     list_of_attributes = ['vol','papers','work','c','html','css','bootstrap','mvc','java','ang','python','ml','nlp','tablaeu','R','stats','linux','windows','multithread']
@@ -96,13 +103,14 @@ def test():
     systems_score = (systems_score * 100 ) /len(systems)
 
 
-    send_dict["Front-End"] = similarityfront
-    send_dict["Back-End"] = similarityback
-    send_dict["Data-Science"] = similarityds
-    send_dict["Data-Analytics"] = similaritydana
+    send_dict["Front"] = similarityfront
+    send_dict["Back"] = similarityback
+    send_dict["DataScience"] = similarityds
+    send_dict["DataAnalytics"] = similaritydana
     send_dict["Systems"] = systems_score
 
-    return jsonify(jsonobj=send_dict)
+    resu = jsonify(jsonobj=send_dict)
+    return resu
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="192.168.1.16", port=5000, debug=True)
